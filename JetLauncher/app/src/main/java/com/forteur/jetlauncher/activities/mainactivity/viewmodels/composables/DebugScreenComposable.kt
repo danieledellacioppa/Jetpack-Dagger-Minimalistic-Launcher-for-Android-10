@@ -1,5 +1,6 @@
 package com.forteur.jetlauncher.activities.mainactivity.viewmodels.composables
 
+import android.content.pm.ApplicationInfo
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.ExperimentalMaterialApi
@@ -14,9 +15,10 @@ import com.forteur.jetlauncher.activities.mainactivity.viewmodels.DebugScreenVie
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun DebugScreenComposable(viewModel: DebugScreenViewModel) {
+fun DebugScreenComposable(viewModel: DebugScreenViewModel, appsLiveData: MutableList<ApplicationInfo>) {
     val sheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
     val coroutineScope = rememberCoroutineScope()
+
 
     Scaffold( floatingActionButton = { DebugFloatingActionButton(coroutineScope, sheetState) } )
     {
@@ -26,7 +28,7 @@ fun DebugScreenComposable(viewModel: DebugScreenViewModel) {
             MyScreenWithModalBottomSheet(
                 sheetState = sheetState,
                 sheetContent = {
-                    AppList(viewModel.packageManager)
+                    AppList(viewModel.packageManager, appsLiveData)
                 },
                 content = {
                     Box(modifier = Modifier.fillMaxSize()) {
@@ -37,6 +39,8 @@ fun DebugScreenComposable(viewModel: DebugScreenViewModel) {
            }
     }
 }
+
+
 
 
 

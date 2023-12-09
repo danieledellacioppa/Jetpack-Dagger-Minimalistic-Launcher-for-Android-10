@@ -8,8 +8,9 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 
+
 @Composable
-fun AppList(packageManager: PackageManager) {
+fun AppList(packageManager: PackageManager, appsLiveData: MutableList<ApplicationInfo>) {
     val apps = getInstalledApps(packageManager)
 
     LazyVerticalGrid(GridCells.Fixed(5)) {
@@ -19,7 +20,7 @@ fun AppList(packageManager: PackageManager) {
     }
 }
 
-fun getInstalledApps(packageManager: PackageManager): List<ApplicationInfo> {
+fun getInstalledApps(packageManager: PackageManager): MutableList<ApplicationInfo> {
 //    return packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
     val mainIntent = Intent(Intent.ACTION_MAIN, null)
     mainIntent.addCategory(Intent.CATEGORY_LAUNCHER)

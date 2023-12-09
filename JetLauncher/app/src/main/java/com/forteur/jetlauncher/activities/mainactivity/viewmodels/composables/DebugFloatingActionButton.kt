@@ -1,5 +1,8 @@
 package com.forteur.jetlauncher.activities.mainactivity.viewmodels.composables
 
+import android.content.Intent
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material.icons.Icons
@@ -21,3 +24,4 @@ fun DebugFloatingActionButton(coroutineScope: CoroutineScope, sheetState: ModalB
         Icon(Icons.Filled.KeyboardArrowUp, "Open Bottom Sheet")
     }
 }
+
